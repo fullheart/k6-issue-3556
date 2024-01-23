@@ -1,0 +1,26 @@
+{
+  "name": "k6-issue-3556",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "start": "npm run build && cd docker/ && docker compose run --rm --service-ports k6 run --out 'web-dashboard=period=2s' /dist/test-fixed-requests-per-minute.cjs"
+  },
+  "devDependencies": {
+    "@babel/core": "7.23.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@tsconfig/node20": "^20.1.2",
+    "@types/k6": "~0.48.0",
+    "@types/node": "^20.11.5",
+    "@types/uuid": "^9.0.7",
+    "rollup-plugin-copy": "^3.5.0",
+    "typescript": "5.3.2",
+    "vite": "^5.0.12"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sagemaker-runtime": "^3.478.0",
+    "k6-jslib-aws": "github:grafana/k6-jslib-aws#v0.11.0"
+  }
+}

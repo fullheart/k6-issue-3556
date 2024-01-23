@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  k6:
+    build:
+      context: .
+    platform: linux/amd64
+    ports:
+      - "5665:5665"
+    volumes:
+      - "./../dist:/dist"
+    # Share Host environment variables for signing HTTP requests
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_SESSION_TOKEN
+      - AWS_REGION
+    tty: true
